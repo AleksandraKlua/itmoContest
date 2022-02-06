@@ -71,9 +71,13 @@ public class Main {
         if(Integer.parseInt(value) > 100) {
             String[] value2 = value.split("");
             String hundreds = value2[0] + "00";
-            String dozens = value2[1] + "0";
-            String units = value2[2];
-            return new int[]{Integer.parseInt(hundreds), Integer.parseInt(dozens), Integer.parseInt(units)};
+            if(Integer.parseInt(value2[1] +  value2[2]) > 20) {
+                return new int[]{Integer.parseInt(hundreds), Integer.parseInt(value2[1] +  value2[2])};
+            } else {
+                String dozens = value2[1] + "0";
+                String units = value2[2];
+                return new int[]{Integer.parseInt(hundreds), Integer.parseInt(dozens), Integer.parseInt(units)};
+            }
         } else if(Integer.parseInt(value) > 20) {
             String[] value2 = value.split("");
             String dozens = value2[0] + "0";
@@ -103,18 +107,18 @@ public class Main {
             case 40:
                 return 5;
             case 11:
-            case 17:
+            case 16:
             case 80:
                 return 11;
             case 12:
             case 13:
             case 15:
+            case 17:
             case 60:
                 return 10;
             case 14:
             case 18:
             case 19:
-            case 16:
                 return 12;
             case 20:
             case 30:
